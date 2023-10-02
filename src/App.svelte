@@ -15,5 +15,5 @@
 	<Route path="/create" component={FormPost} />
   <Route path="/" component={Home} />
   <Route path="/:id" let:params> <Post id={params.id} /></Route>
-  <Route path="/edit/:id" let:params> <FormPost id={params.id} /></Route>
+  <Route path="/edit/:id" let:params> <FormPost id={params.id}/></Route>
 </Router>

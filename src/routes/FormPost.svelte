@@ -1,17 +1,17 @@
 <script>
-  let title = "";
-  let text = "";
-
   export let id;
+
+ 
+  const posts = JSON.parse(localStorage.getItem("posts"));
+  let desiredPost = id ? posts.find((post) => post.id === id) : "";
+  let title = desiredPost.title ?desiredPost.title : "" ;
+  let text = desiredPost.text ?desiredPost.text : ""
 
  const savePost = () => {
     const newId =
       Date.now().toString(36) + Math.random().toString(36).substr(2);
 
     if (id) {
-      const posts = JSON.parse(localStorage.getItem("posts"));
-      const desiredPost = posts.find((post) => post.id === id);
-
       let updatedItems = posts.filter((item) => item.id !== id);
 
       const post = {
@@ -38,7 +38,7 @@
     }
 
     alert("Данные обновлены");
-    window.location.href = "/";
+  
   };
 </script>
 
