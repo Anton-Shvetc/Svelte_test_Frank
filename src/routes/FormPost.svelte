@@ -1,13 +1,22 @@
 <script>
   export let id;
 
- 
   const posts = JSON.parse(localStorage.getItem("posts"));
   let desiredPost = id ? posts.find((post) => post.id === id) : "";
-  let title = desiredPost.title ?desiredPost.title : "" ;
-  let text = desiredPost.text ?desiredPost.text : ""
+  let title = desiredPost.title ? desiredPost.title : "";
+  let text = desiredPost.text ? desiredPost.text : "";
 
- const savePost = () => {
+  const dateOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timezone: "UTC",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+
+  const savePost = () => {
     const newId =
       Date.now().toString(36) + Math.random().toString(36).substr(2);
 
@@ -19,7 +28,8 @@
         title,
         text,
         createDate: desiredPost.createDate,
-        editDate: new Date().toISOString(),
+        // @ts-ignore
+        editDate: new Date().toLocaleString("ru", dateOptions),
       };
       updatedItems.push(post);
 
@@ -29,7 +39,8 @@
         id: newId,
         title,
         text,
-        createDate: new Date().toISOString(),
+        // @ts-ignore
+        createDate: new Date().toLocaleString("ru", dateOptions),
         editDate: "",
       };
       let oldItems = JSON.parse(localStorage.getItem("posts")) || [];
@@ -38,7 +49,7 @@
     }
 
     alert("Данные обновлены");
-  
+    window.location.href = "/";
   };
 </script>
 

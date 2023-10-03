@@ -19,7 +19,7 @@
   {#if posts.length === 0}
     <p>Нет сохраненных постов.</p>
   {:else}
-    {#each posts as post (post.title)} 
+    {#each posts as post (post.id)} 
     <div class="post">
       <h3>{post.title}</h3>
       <p>Дата создания: {post.createDate}</p>

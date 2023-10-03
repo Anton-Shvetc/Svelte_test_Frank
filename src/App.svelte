@@ -9,8 +9,8 @@
 
 <Router {url}>
   <nav>
-    <Link to="/">Home</Link>
-	  <Link to="/create">new Post</Link>
+    <Link to="/">Главная</Link>
+	  <Link to="/create">Добавить</Link>
   </nav>
 	<Route path="/create" component={FormPost} />
   <Route path="/" component={Home} />
